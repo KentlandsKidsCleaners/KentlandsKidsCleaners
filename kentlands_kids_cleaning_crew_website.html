@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KentlandsKidsCleaners</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1220;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1e3a8a, #0ea5e9);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #e2e8f0;
+    }
+
+    .logo {
+      width: 110px;
+      height: 110px;
+      margin: 10px auto;
+      border-radius: 20px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #22c55e;
+      color: black;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button:hover { background: #16a34a; }
+    .button.blue { background: #38bdf8; }
+    .button.blue:hover { background: #0ea5e9; }
+    .button.purple { background: #a855f7; }
+    .button.purple:hover { background: #9333ea; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .review {
+      background: #0f172a;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .qr {
+      width: 140px;
+      border-radius: 10px;
+    }
+
+    .price {
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    .total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    🚗💧
+  </div>
+  <h1>KentlandsKidsCleaners</h1>
+  <p>Exterior • Interior • Powerwashing Services</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>About Us</h2>
+    <p>We are local students offering mobile car cleaning and powerwashing services in your neighborhood. We come to you and make everything look fresh again.</p>
+  </div>
+
+  <div class="card">
+    <h2>💰 Price Estimator</h2>
+    <p>Select options to estimate your price:</p>
+
+    <select id="service">
+      <option value="0">Select Service</option>
+      <option value="15">Exterior Wash ($15)</option>
+      <option value="10">Interior Clean ($10)</option>
+      <option value="35">Front Powerwash ($35)</option>
+      <option value="20">Trash Can Powerwash (Regular $20)</option>
+    </select>
+
+    <select id="size">
+      <option value="0">No size add-on</option>
+      <option value="10">Small (+$10)</option>
+      <option value="15">Medium (+$15)</option>
+      <option value="20">Large (+$20)</option>
+    </select>
+
+    <button class="button" onclick="calcPrice()">Calculate Price</button>
+
+    <div class="total" id="total">Total: $0</div>
+  </div>
+
+  <div class="card">
+    <h2>Car Cleaning Services</h2>
+    <ul>
+      <li>🚿 Exterior wash - $15</li>
+      <li>🧼 Interior clean - $10</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Powerwashing Services</h2>
+    <ul>
+      <li>🗑️ Trash cans (Small $10 / Medium $15 / Regular $20)</li>
+      <li>🏠 Front exterior powerwash - $35</li>
+      <li>🚶 Sidewalk add-on +$10</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📅 Booking</h2>
+    <form action="mailto:kentlandscleaners@example.com" method="post">
+      <input placeholder="Name" required>
+      <input placeholder="Address (required for service)" required>
+
+      <select required>
+        <option value="" disabled selected>Select service</option>
+        <option>Exterior Wash</option>
+        <option>Interior Clean</option>
+        <option>Powerwashing</option>
+      </select>
+
+      <input type="date" required>
+      <input type="time" required>
+
+      <button class="button" type="submit">Send Booking</button>
+      <button class="button blue" type="reset">Clear</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>⭐ Leave a Review</h2>
+    <form action="mailto:kentlandscleaners@example.com" method="post">
+      <input placeholder="Your Name" required>
+      <input placeholder="Address (optional)">
+
+      <select required>
+        <option disabled selected>Rating</option>
+        <option>⭐⭐⭐⭐⭐</option>
+        <option>⭐⭐⭐⭐</option>
+        <option>⭐⭐⭐</option>
+      </select>
+
+      <textarea placeholder="Write review" rows="4" required></textarea>
+
+      <button class="button">Submit Review</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>💳 Payments</h2>
+    <a class="button blue" href="https://cash.app/$YOURTAG" target="_blank">CashApp</a>
+    <a class="button purple" href="https://venmo.com/YOURUSERNAME" target="_blank">Venmo</a>
+  </div>
+
+  <div class="card">
+    <h2>⭐ Public Reviews</h2>
+    <div class="review">“Amazing job on my car!” - Alex</div>
+    <div class="review">“Super clean driveway and trash cans.” - Jamie</div>
+    <div class="review">“Fast and professional.” - Sam</div>
+  </div>
+
+  <div class="card">
+    <h2>📲 QR Code</h2>
+    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yourwebsite.com" />
+  </div>
+
+</div>
+
+<footer>
+  © 2026 KentlandsKidsCleaners
+</footer>
+
+<script>
+function calcPrice() {
+  let service = parseInt(document.getElementById('service').value);
+  let size = parseInt(document.getElementById('size').value);
+  let total = service + size;
+  document.getElementById('total').innerText = "Total: $" + total;
+}
+</script>
+
+</body>
+</html>
