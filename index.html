@@ -79,6 +79,21 @@
       border: none;
     }
 
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0f172a;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin: 0;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -86,12 +101,7 @@
       font-size: 13px;
     }
 
-    .review {
-      background: #0f172a;
-      padding: 10px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
+    
 
     .qr {
       width: 140px;
@@ -131,24 +141,52 @@
 
   <div class="card">
     <h2>💰 Price Estimator</h2>
-    <p>Select options to estimate your price:</p>
+    <p>Select all services the customer wants:</p>
 
-    <select id="service">
-      <option value="0">Select Service</option>
-      <option value="15">Exterior Wash ($15)</option>
-      <option value="10">Interior Clean ($10)</option>
-      <option value="35">Front Powerwash ($35)</option>
-      <option value="20">Trash Can Powerwash (Regular $20)</option>
-    </select>
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="15">
+      Exterior Wash ($15)
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="10">
+      Interior Clean ($10)
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="35">
+      Front Powerwash ($35)
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="10">
+      Sidewalk Add-On (+$10)
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="10">
+      Trash Can Powerwash - Small ($10)
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="15">
+      Trash Can Powerwash - Medium ($15)
+    </label>
+
+    <label class="checkbox-row">
+      <input type="checkbox" class="service-option" value="20">
+      Trash Can Powerwash - Regular ($20)
+    </label>
 
     <select id="size">
-      <option value="0">No size add-on</option>
-      <option value="10">Small (+$10)</option>
-      <option value="15">Medium (+$15)</option>
-      <option value="20">Large (+$20)</option>
+      <option value="0">No vehicle size add-on</option>
+      <option value="10">Small Vehicle (+$10)</option>
+      <option value="15">Medium Vehicle (+$15)</option>
+      <option value="20">Large Vehicle (+$20)</option>
     </select>
 
     <button class="button" onclick="calcPrice()">Calculate Price</button>
+    <button class="button blue" onclick="clearEstimator()">Clear Options</button>
 
     <div class="total" id="total">Total: $0</div>
   </div>
@@ -173,42 +211,63 @@
   <div class="card">
     <h2>📅 Booking</h2>
     <form action="mailto:kentlandscleaners@example.com" method="post">
-      <input placeholder="Name" required>
-      <input placeholder="Address (required for service)" required>
+      <input name="Name" placeholder="Name" required>
+      <input name="Address" placeholder="Address (required for service)" required>
 
-      <select required>
-        <option value="" disabled selected>Select service</option>
-        <option>Exterior Wash</option>
-        <option>Interior Clean</option>
-        <option>Powerwashing</option>
+      <p>Choose all services wanted:</p>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Exterior Wash">
+        Exterior Wash ($15)
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Interior Clean">
+        Interior Clean ($10)
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Front Powerwash">
+        Front Powerwash ($35)
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Sidewalk Add-On">
+        Sidewalk Add-On (+$10)
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Trash Can Powerwash Small">
+        Trash Can Powerwash - Small ($10)
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Trash Can Powerwash Medium">
+        Trash Can Powerwash - Medium ($15)
+      </label>
+
+      <label class="checkbox-row">
+        <input type="checkbox" name="Service" value="Trash Can Powerwash Regular">
+        Trash Can Powerwash - Regular ($20)
+      </label>
+
+      <select name="Vehicle Size">
+        <option>No vehicle size add-on</option>
+        <option>Small Vehicle (+$10)</option>
+        <option>Medium Vehicle (+$15)</option>
+        <option>Large Vehicle (+$20)</option>
       </select>
 
-      <input type="date" required>
-      <input type="time" required>
+      <input name="Date" type="date" required>
+      <input name="Time" type="time" required>
+      <textarea name="Notes" placeholder="Extra notes (optional)" rows="3"></textarea>
 
       <button class="button" type="submit">Send Booking</button>
       <button class="button blue" type="reset">Clear</button>
     </form>
   </div>
 
-  <div class="card">
-    <h2>⭐ Leave a Review</h2>
-    <form action="mailto:kentlandscleaners@example.com" method="post">
-      <input placeholder="Your Name" required>
-      <input placeholder="Address (optional)">
-
-      <select required>
-        <option disabled selected>Rating</option>
-        <option>⭐⭐⭐⭐⭐</option>
-        <option>⭐⭐⭐⭐</option>
-        <option>⭐⭐⭐</option>
-      </select>
-
-      <textarea placeholder="Write review" rows="4" required></textarea>
-
-      <button class="button">Submit Review</button>
-    </form>
-  </div>
+  
 
   <div class="card">
     <h2>💳 Payments</h2>
@@ -216,9 +275,7 @@
     <a class="button purple" href="https://venmo.com/YOURUSERNAME" target="_blank">Venmo</a>
   </div>
 
-  <div class="card">
-    <h2>⭐ Public Reviews</h2>
-    <div class="review">“Amazing job on my car!” - Alex</div>
+  
     <div class="review">“Super clean driveway and trash cans.” - Jamie</div>
     <div class="review">“Fast and professional.” - Sam</div>
   </div>
@@ -236,10 +293,24 @@
 
 <script>
 function calcPrice() {
-  let service = parseInt(document.getElementById('service').value);
-  let size = parseInt(document.getElementById('size').value);
-  let total = service + size;
+  let total = 0;
+
+  document.querySelectorAll('.service-option:checked').forEach(function(option) {
+    total += parseInt(option.value);
+  });
+
+  total += parseInt(document.getElementById('size').value);
+
   document.getElementById('total').innerText = "Total: $" + total;
+}
+
+function clearEstimator() {
+  document.querySelectorAll('.service-option').forEach(function(option) {
+    option.checked = false;
+  });
+
+  document.getElementById('size').value = "0";
+  document.getElementById('total').innerText = "Total: $0";
 }
 </script>
 
