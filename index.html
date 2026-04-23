@@ -3,315 +3,182 @@
 <head>
   <title>KentlandsKidsCleaners</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1220;
-      color: white;
-    }
-
-    header {
-      background: linear-gradient(90deg, #1e3a8a, #0ea5e9);
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 40px;
-    }
-
-    header p {
-      margin-top: 10px;
-      color: #e2e8f0;
-    }
-
-    .logo {
-      width: 110px;
-      height: 110px;
-      margin: 10px auto;
-      border-radius: 20px;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .card {
-      background: #111827;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 12px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      background: #22c55e;
-      color: black;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-      margin-top: 10px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .button:hover { background: #16a34a; }
-    .button.blue { background: #38bdf8; }
-    .button.blue:hover { background: #0ea5e9; }
-    .button.purple { background: #a855f7; }
-    .button.purple:hover { background: #9333ea; }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 6px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      border: none;
-    }
-
-    .checkbox-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #0f172a;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .checkbox-row input {
-      width: auto;
-      margin: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #94a3b8;
-      font-size: 13px;
-    }
-
-    
-
-    .qr {
-      width: 140px;
-      border-radius: 10px;
-    }
-
-    .price {
-      color: #22c55e;
-      font-weight: bold;
-    }
-
-    .total {
-      font-size: 20px;
-      font-weight: bold;
-      color: #38bdf8;
-      margin-top: 10px;
-    }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: linear-gradient(180deg, #e0f2fe, #f0f9ff); color: #0f172a; }
+    header { background: linear-gradient(90deg, #22c55e, #38bdf8); padding: 40px 20px; text-align: center; color: white; }
+    header h1 { margin: 0; font-size: 42px; font-weight: 800; }
+    header p { margin-top: 10px; opacity: 0.95; }
+    .logo { width: 120px; height: 120px; margin: 10px auto 16px; border-radius: 28px; background: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .logo svg { width: 92px; height: 92px; }
+    .container { max-width: 900px; margin: auto; padding: 20px; }
+    .card { background: white; padding: 22px; margin: 20px 0; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    h2 { margin-top: 0; color: #0ea5e9; }
+    .button { display: inline-block; padding: 12px 18px; background: linear-gradient(90deg, #22c55e, #16a34a); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; margin-top: 10px; border: none; cursor: pointer; }
+    .button:hover { opacity: 0.9; }
+    .button.blue { background: linear-gradient(90deg, #38bdf8, #0ea5e9); }
+    .button.purple { background: linear-gradient(90deg, #a855f7, #9333ea); }
+    input, select, textarea { width: 100%; padding: 12px; margin-top: 6px; margin-bottom: 12px; border-radius: 10px; border: 1px solid #e5e7eb; font-size: 14px; box-sizing: border-box; }
+    .service-row { display: grid; grid-template-columns: auto 1fr 85px; align-items: center; gap: 10px; background: #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 10px; }
+    .service-row input[type="checkbox"] { width: auto; margin: 0; }
+    .service-row input[type="number"] { margin: 0; padding: 8px; }
+    .total { font-size: 24px; font-weight: 800; color: #0ea5e9; background: #e0f2fe; padding: 14px; border-radius: 12px; margin-top: 12px; }
+    .note { font-size: 13px; color: #64748b; }
+    .contact-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+    footer { text-align: center; padding: 20px; color: #64748b; font-size: 13px; }
   </style>
 </head>
-
 <body>
 
 <header>
   <div class="logo">
-    🚗💧
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="KentlandsKidsCleaners logo">
+      <circle cx="60" cy="60" r="52" fill="#e0f2fe"/>
+      <path d="M27 70c5-18 13-27 24-27h18c11 0 19 9 24 27" fill="#22c55e"/>
+      <path d="M34 66h52c4 0 8 4 8 8v9H26v-9c0-4 4-8 8-8z" fill="#0ea5e9"/>
+      <circle cx="42" cy="84" r="7" fill="#0f172a"/>
+      <circle cx="78" cy="84" r="7" fill="#0f172a"/>
+      <circle cx="42" cy="84" r="3" fill="white"/>
+      <circle cx="78" cy="84" r="3" fill="white"/>
+      <path d="M42 47h36l8 19H34l8-19z" fill="white" opacity="0.9"/>
+      <path d="M51 31c0 8-9 13-9 20 0 5 4 9 9 9s9-4 9-9c0-7-9-12-9-20z" fill="#38bdf8"/>
+      <path d="M76 27c0 6-7 10-7 16 0 4 3 7 7 7s7-3 7-7c0-6-7-10-7-16z" fill="#22c55e"/>
+      <text x="60" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#0f172a">KKC</text>
+    </svg>
   </div>
   <h1>KentlandsKidsCleaners</h1>
-  <p>Exterior • Interior • Powerwashing Services</p>
+  <p>Friendly • Fast • Affordable Cleaning</p>
 </header>
 
 <div class="container">
-
   <div class="card">
-    <h2>About Us</h2>
-    <p>We are local students offering mobile car cleaning and powerwashing services in your neighborhood. We come to you and make everything look fresh again.</p>
+    <h2>👋 About Us</h2>
+    <p>We’re local students helping keep your cars and homes clean! We come right to you and make everything look fresh again.</p>
   </div>
 
   <div class="card">
-    <h2>💰 Price Estimator</h2>
-    <p>Select all services the customer wants:</p>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="15">
-      Exterior Wash ($15)
-    </label>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="10">
-      Interior Clean ($10)
-    </label>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="35">
-      Front Powerwash ($35)
-    </label>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="10">
-      Sidewalk Add-On (+$10)
-    </label>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="10">
-      Trash Can Powerwash - Small ($10)
-    </label>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="15">
-      Trash Can Powerwash - Medium ($15)
-    </label>
-
-    <label class="checkbox-row">
-      <input type="checkbox" class="service-option" value="20">
-      Trash Can Powerwash - Regular ($20)
-    </label>
-
-    <select id="size">
-      <option value="0">No vehicle size add-on</option>
-      <option value="10">Small Vehicle (+$10)</option>
-      <option value="15">Medium Vehicle (+$15)</option>
-      <option value="20">Large Vehicle (+$20)</option>
-    </select>
-
-    <button class="button" onclick="calcPrice()">Calculate Price</button>
-    <button class="button blue" onclick="clearEstimator()">Clear Options</button>
-
-    <div class="total" id="total">Total: $0</div>
+    <h2>📞 Contact</h2>
+    <p>Call, text, or email us to ask questions or book a cleaning.</p>
+    <div class="contact-buttons">
+      <a class="button blue" href="tel:3015490706">📞 Call 301-549-0706</a>
+      <a class="button" href="sms:3015490706">💬 Text Us</a>
+      <a class="button purple" href="mailto:milan.altaweel@gmail.com">✉️ Email Us</a>
+    </div>
   </div>
 
   <div class="card">
-    <h2>Car Cleaning Services</h2>
-    <ul>
-      <li>🚿 Exterior wash - $15</li>
-      <li>🧼 Interior clean - $10</li>
-    </ul>
-  </div>
+    <h2>📅 Book & Estimate Price</h2>
+    <p>Choose everything you want, add quantities, and your total will update automatically.</p>
 
-  <div class="card">
-    <h2>Powerwashing Services</h2>
-    <ul>
-      <li>🗑️ Trash cans (Small $10 / Medium $15 / Regular $20)</li>
-      <li>🏠 Front exterior powerwash - $35</li>
-      <li>🚶 Sidewalk add-on +$10</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>📅 Booking</h2>
-    <form action="mailto:kentlandscleaners@example.com" method="post">
+    <form action="mailto:milan.altaweel@gmail.com" method="post" enctype="text/plain" onsubmit="prepareBookingMessage()">
       <input name="Name" placeholder="Name" required>
       <input name="Address" placeholder="Address (required for service)" required>
 
-      <p>Choose all services wanted:</p>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Exterior Wash" data-price="15"><span>🚿 Exterior Wash ($15 per car)</span><input type="number" class="qty" min="1" value="1"></div>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Interior Clean" data-price="10"><span>🧼 Interior Clean ($10 per car)</span><input type="number" class="qty" min="1" value="1"></div>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Front Powerwash" data-price="35"><span>🏠 Front Powerwash ($35)</span><input type="number" class="qty" min="1" value="1"></div>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Sidewalk Add-On" data-price="10"><span>🚶 Sidewalk Add-On (+$10)</span><input type="number" class="qty" min="1" value="1"></div>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Small Trash Can Powerwash" data-price="10"><span>🗑️ Small Trash Can ($10 each)</span><input type="number" class="qty" min="1" value="1"></div>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Medium Trash Can Powerwash" data-price="15"><span>🗑️ Medium Trash Can ($15 each)</span><input type="number" class="qty" min="1" value="1"></div>
+      <div class="service-row"><input type="checkbox" class="service-option" data-name="Regular Trash Can Powerwash" data-price="20"><span>🗑️ Regular Trash Can ($20 each)</span><input type="number" class="qty" min="1" value="1"></div>
 
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Exterior Wash">
-        Exterior Wash ($15)
-      </label>
-
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Interior Clean">
-        Interior Clean ($10)
-      </label>
-
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Front Powerwash">
-        Front Powerwash ($35)
-      </label>
-
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Sidewalk Add-On">
-        Sidewalk Add-On (+$10)
-      </label>
-
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Trash Can Powerwash Small">
-        Trash Can Powerwash - Small ($10)
-      </label>
-
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Trash Can Powerwash Medium">
-        Trash Can Powerwash - Medium ($15)
-      </label>
-
-      <label class="checkbox-row">
-        <input type="checkbox" name="Service" value="Trash Can Powerwash Regular">
-        Trash Can Powerwash - Regular ($20)
-      </label>
-
-      <select name="Vehicle Size">
-        <option>No vehicle size add-on</option>
-        <option>Small Vehicle (+$10)</option>
-        <option>Medium Vehicle (+$15)</option>
-        <option>Large Vehicle (+$20)</option>
+      <select id="size" name="Vehicle Size Add-On">
+        <option value="0">No vehicle size add-on</option>
+        <option value="10">Small Vehicle (+$10)</option>
+        <option value="15">Medium Vehicle (+$15)</option>
+        <option value="20">Large Vehicle (+$20)</option>
       </select>
 
       <input name="Date" type="date" required>
       <input name="Time" type="time" required>
-      <textarea name="Notes" placeholder="Extra notes (optional)" rows="3"></textarea>
+      <textarea name="Notes" placeholder="Extra notes (optional)" rows="4"></textarea>
+      <input type="hidden" id="bookingSummary" name="Booking Summary">
+      <input type="hidden" id="bookingTotal" name="Estimated Total">
 
+      <div class="total" id="total">Estimated Total: $0</div>
+      <p class="note">This is an estimate. Final price may change if the job is much bigger than expected.</p>
       <button class="button" type="submit">Send Booking</button>
-      <button class="button blue" type="reset">Clear</button>
+      <button class="button blue" type="button" onclick="clearBooking()">Clear Options</button>
     </form>
   </div>
 
-  
+  <div class="card">
+    <h2>⭐ Leave a Review</h2>
+    <form action="mailto:milan.altaweel@gmail.com" method="post" enctype="text/plain">
+      <input name="Review Name" placeholder="Name" required>
+      <select name="Rating" required>
+        <option value="" disabled selected>Rating</option>
+        <option>⭐⭐⭐⭐⭐ Excellent</option>
+        <option>⭐⭐⭐⭐ Great</option>
+        <option>⭐⭐⭐ Good</option>
+        <option>⭐⭐ Fair</option>
+        <option>⭐ Poor</option>
+      </select>
+      <textarea name="Review" placeholder="Your review" rows="4" required></textarea>
+      <button class="button" type="submit">Submit Review</button>
+    </form>
+  </div>
 
   <div class="card">
     <h2>💳 Payments</h2>
+    <p>Pay after service or reserve your spot:</p>
     <a class="button blue" href="https://cash.app/$YOURTAG" target="_blank">CashApp</a>
     <a class="button purple" href="https://venmo.com/YOURUSERNAME" target="_blank">Venmo</a>
+    <p class="note">Replace YOURTAG and YOURUSERNAME with your real CashApp and Venmo usernames.</p>
   </div>
-
-  
-    <div class="review">“Super clean driveway and trash cans.” - Jamie</div>
-    <div class="review">“Fast and professional.” - Sam</div>
-  </div>
-
-  <div class="card">
-    <h2>📲 QR Code</h2>
-    <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yourwebsite.com" />
-  </div>
-
 </div>
 
 <footer>
-  © 2026 KentlandsKidsCleaners
+  © 2026 KentlandsKidsCleaners • 301-549-0706 • milan.altaweel@gmail.com
 </footer>
 
 <script>
-function calcPrice() {
+function calculateTotal() {
   let total = 0;
-
-  document.querySelectorAll('.service-option:checked').forEach(function(option) {
-    total += parseInt(option.value);
+  document.querySelectorAll('.service-row').forEach(row => {
+    const checkbox = row.querySelector('.service-option');
+    const qtyInput = row.querySelector('.qty');
+    if (checkbox && checkbox.checked) {
+      const price = parseInt(checkbox.dataset.price) || 0;
+      const qty = parseInt(qtyInput.value) || 1;
+      total += price * qty;
+    }
   });
-
-  total += parseInt(document.getElementById('size').value);
-
-  document.getElementById('total').innerText = "Total: $" + total;
+  total += parseInt(document.getElementById('size').value) || 0;
+  document.getElementById('total').innerText = 'Estimated Total: $' + total;
+  return total;
 }
 
-function clearEstimator() {
-  document.querySelectorAll('.service-option').forEach(function(option) {
-    option.checked = false;
+function prepareBookingMessage() {
+  let summary = [];
+  document.querySelectorAll('.service-row').forEach(row => {
+    const checkbox = row.querySelector('.service-option');
+    const qtyInput = row.querySelector('.qty');
+    if (checkbox && checkbox.checked) {
+      const name = checkbox.dataset.name;
+      const price = parseInt(checkbox.dataset.price) || 0;
+      const qty = parseInt(qtyInput.value) || 1;
+      summary.push(name + ' x' + qty + ' = $' + (price * qty));
+    }
   });
-
-  document.getElementById('size').value = "0";
-  document.getElementById('total').innerText = "Total: $0";
+  const sizeSelect = document.getElementById('size');
+  if (parseInt(sizeSelect.value) > 0) summary.push(sizeSelect.options[sizeSelect.selectedIndex].text);
+  const total = calculateTotal();
+  document.getElementById('bookingSummary').value = summary.join('\n');
+  document.getElementById('bookingTotal').value = '$' + total;
 }
+
+function clearBooking() {
+  document.querySelectorAll('.service-option').forEach(option => option.checked = false);
+  document.querySelectorAll('.qty').forEach(qty => qty.value = 1);
+  document.getElementById('size').value = '0';
+  document.getElementById('total').innerText = 'Estimated Total: $0';
+}
+
+document.querySelectorAll('.service-option, .qty, #size').forEach(item => {
+  item.addEventListener('change', calculateTotal);
+  item.addEventListener('input', calculateTotal);
+});
 </script>
 
 </body>
